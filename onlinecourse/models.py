@@ -68,6 +68,14 @@ class Course(models.Model):
                "Description: " + self.description
 
 
+class Question(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+    grade = models.IntegerField(default=50)
+
+    def __str__(self):
+        return "Question: " + self.content
+
 # Lesson model
 class Lesson(models.Model):
     title = models.CharField(max_length=200, default="title")
